@@ -86,9 +86,13 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 	-- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE en forma decendente
 	select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION from clientes  group by POBLACIÓN order by CLIENTES_POBLACION desc;
     
+	-- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE, mostrando CÓDIGOCLIENTE por POBLACIÓN y ordenados por clientes en forma decendente
+    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION, RESPONSABLE from clientes  group by POBLACIÓN order by CLIENTES_POBLACION  desc;
     
-    -- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE, mostrando CÓDIGOCLIENTE por POBLACIÓN y ordenados por clientes en forma decendente
-    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION, RESPONSABLE from clientes  group by POBLACIÓN order by CLIENTES_POBLACION desc;
+    
+    -- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE, mostrando CÓDIGOCLIENTE por POBLACIÓN y ordenados por clientes en forma decendente solo muetra el mayor gracias a la clausula  LIMIT 1 en conbinacion con DESC
+    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION, RESPONSABLE from clientes  group by POBLACIÓN order by CLIENTES_POBLACION  DESC LIMIT 1;
+    
     
 	 -- Consulta agrupada por POBLACIÓN contada por CÓDIGOCLIENTE y agrupada por POBLACIÓN en forma decendentey ordenados por clientes en forma decendente donde RESPONSABLE > 10
      select  POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE from clientes  group by POBLACIÓN having CLIENTES_POBLACION >= 10  or CLIENTES_POBLACION >= 5;
@@ -152,7 +156,7 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 -- con el nombre de “Residencia”. Los registros aparecerán ordenados
 -- descendentemente por el campo “Población”.
 
-select DIRECCIÓN,TELÉFONO,POBLACIÓN as Residencia  from clientes order by  Residencia desc
+select DIRECCIÓN,TELÉFONO,POBLACIÓN as Residencia  from clientes order by  Residencia desc;
 
 
 
@@ -160,7 +164,44 @@ select DIRECCIÓN,TELÉFONO,POBLACIÓN as Residencia  from clientes order by  Re
                                
 -- Realizar una consulta que muestre que poblaciones hay en la tabla “Clientes”.
 
+select POBLACIÓN from clientes;
 
+
+
+								-- Ejerccio 3 --
+
+-- Realizar una consulta de agrupación; Que muestre la suma del precio de los artículos de todas las secciones.
+-- Mostrar en la consulta los campos sección y suma por sección.
+
+
+	-- CAMPO DE AGRUPACION = seccion
+	-- CAMPO DEL CALCULO = precio
+    
+    select SECCIÓN, sum(PRECIO) as SUMA_POR_SECCION from productos  group by SECCIÓN;
+    
+    
+    
+    
+							 -- Ejerccio 4 --
+                             
+-- Realizar una consulta de agrupación que muestre la media del precio de todas las secciones menos de juguetería.
+-- En la consulta deberán aparecer los campos Sección” y “Media por sección”.
+
+-- CAMPO DE AGRUPACION =  SECCION
+-- CAMPO DEL CALCULO = PRECIO
+
+select SECCIÓN, avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN ;
+
+select SECCIÓN, avg(PRECIO) as MEDIA_POR_SECCION from productos  group by SECCIÓN having SECCIÓN='CERÁMICA' or SECCIÓN='CONFECCIÓN' or SECCIÓN='OFICINA'  or SECCIÓN='DEPORTES'  or SECCIÓN='FERRETERÍA'  or SECCIÓN='OFICINA';
+
+                          
+    
+    
+
+
+
+
+  
 
 
 
