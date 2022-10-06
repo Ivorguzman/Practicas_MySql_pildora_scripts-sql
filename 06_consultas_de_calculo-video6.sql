@@ -10,8 +10,8 @@
 
 -- ******* Funciones comunes a SQL mas utilizadas:
 	-- 1. Now() ==> Devuelve el dia y Hora Actual actual en el momento de  hacer la consulta
-    -- 2. Datediff() ==> Devuelve la diferencia entre dos fechas en una consulta
-    -- 3. Date_format() ==> Devuelve permite formatear los resltados de fechas ( Quitar decimales, etc ) 
+    -- 2. Datediff( , ) ==> Devuelve la diferencia entre dos fechas en una consulta
+    -- 3. Date_format( %D-%M-%Y) ==> Devuelve permite formatear los resltados de fechas ( Quitar decimales, etc ) 
     -- 4. Round() ==> Permite redondear resultados
     -- 5. Truncate() ==> 
     -- 6. Concat() ==> permite concatenar.
@@ -21,7 +21,8 @@
     
     --  Crear una consulta sobre la tabla productos donde se incremente le IVA (21%) a cada producto:
     
-                                                          --  ---- Funcion Round().----
+                                                          --  ---- Funcion Round() ==> Permite redondear resultados .----
+                                                          
     select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA from productos;
     
     --  Crear consulta que refleje un descuento de 5% en cada articulo
@@ -45,16 +46,65 @@
     --  Crear consulta que refleje un descuento de 5% en cada articulo ordenado por precio mostrando el ariculos mas caro que este entre 100 y 400  seccon deportes
     select NOMBREARTÍCULO,FECHA, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_MENOS_DESCUENTO    from  productos   where SECCIÓN='DEPORTES' having  PRECIO  between 100 and 400  order by PRECIO desc LIMIT 1;
    
+   
+     
+                                                                 
+                                                                 
+                                                                 
+										--  -**** Funcion Now() ==> Devuelve el dia y Hora Actual actual en el momento de  hacer la consulta.****
+																			
+       
+       select NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA from productos;
+       
+       
+       select NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA from productos where SECCIÓN='DEPORTES';
+       
+       
+       -- Utilizando funcion  Now() en la consulta
+       select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY from productos where SECCIÓN='DEPORTES';
+       
+              
+      -- ****** Datediff(  ,   ) ==> Devuelve la diferencia entre dos fechas en una consulta ******
       
-                                                                                      --  ---- Funcion Now().----
-                                                                                      
-                                                                                      
+      -- Nota:
+      select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY, datediff(now() , FECHA )  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
       
+      
+      
+      
+      
+      
+              --  -**** Date_format( %D-%M-%Y) ==> Devuelve permite formatear los resltados de fechas ( Quitar decimales, etc )  .****
+              
+	  select NOMBREARTÍCULO,SECCIÓN,PRECIO, Date_format( now(),'%D-%M-%Y') as FECHA_DE_HOY, datediff(now() , FECHA )  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
+       
+	
+     
+     
     
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     
     
     
     
