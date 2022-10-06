@@ -10,8 +10,8 @@
 
 -- ******* Funciones comunes a SQL mas utilizadas:
 	-- 1. Now() ==> Devuelve el dia y Hora Actual actual en el momento de  hacer la consulta
-    -- 2. Datediff( , ) ==> Devuelve la diferencia entre dos fechas en una consulta
-    -- 3. Date_format( %D-%M-%Y) ==> Devuelve permite formatear los resltados de fechas ( Quitar decimales, etc ) 
+    -- 2. Datediff( , ) ==> Devuelve el no de dias entre dos fechas en una consulta
+    -- 3. Date_format( %D-%M-%Y) ==> Permite formatear las fechas
     -- 4. Round() ==> Permite redondear resultados
     -- 5. Truncate() ==> 
     -- 6. Concat() ==> permite concatenar.
@@ -21,7 +21,7 @@
     
     --  Crear una consulta sobre la tabla productos donde se incremente le IVA (21%) a cada producto:
     
-                                                          --  ---- Funcion Round() ==> Permite redondear resultados .----
+                                              --  ---- Funcion Round() ==> Permite redondear resultados .----
                                                           
     select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA from productos;
     
@@ -63,26 +63,41 @@
        -- Utilizando funcion  Now() en la consulta
        select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY from productos where SECCIÓN='DEPORTES';
        
+       
+       
+       
+       
+                      -- ****** datediff(  ,   ) ==> Devuelve el no de dias entre dos fechas en una consulta ******
+      
+      -- Nota: No se puede trabajar con los alias
+      select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY, datediff(now() , FECHA)  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
+      
+      
+      
+      
+                   
+              --  -**** Date_format( %D-%M-%Y) ==> Permite formatear las fechas   .****
               
-      -- ****** Datediff(  ,   ) ==> Devuelve la diferencia entre dos fechas en una consulta ******
-      
-      -- Nota:
-      select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY, datediff(now() , FECHA )  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
-      
-      
-      
-      
-      
-      
-              --  -**** Date_format( %D-%M-%Y) ==> Devuelve permite formatear los resltados de fechas ( Quitar decimales, etc )  .****
-              
-	  select NOMBREARTÍCULO,SECCIÓN,PRECIO, Date_format( now(),'%D-%M-%Y') as FECHA_DE_HOY, datediff(now() , FECHA )  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
+	  select NOMBREARTÍCULO,SECCIÓN,PRECIO, Date_format(now(),'%M-%Y') as FECHA_DE_HOY, Date_format(datediff(now() , FECHA ),'%D-%M-%Y' ) as DIFERENCIA from productos where SECCIÓN='DEPORTES';
        
 	
      
      
-    
-    
+-- *********************************************************************************************************************************
+-- *********************************************************************************************************************************
+--                                                 EJERCICIOS SQL 6
+-- ************************************************************************************************************************ ********
+-- *********************************************************************************************************************************
+
+
+
+
+                                                    -- Ejerccio 1 --  
+                                                    
+  -- Realizar una consulta que visualice los campos NOMBRE ARTÍCULO,SECCIÓN, PRECIO de la tabla PRODUCTOS y un campo nuevo que nombramos con el texto “DESCUENTO_7”.
+  -- Debe mostrar el resultado de aplicar sobre el campo PRECIO un descuento de un 7 %. El formato del nuevo campo para debe aparecer con 2 lugares decimales.
+
+
     
     
     
