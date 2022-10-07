@@ -97,16 +97,48 @@
   -- Realizar una consulta que visualice los campos NOMBRE ARTÍCULO,SECCIÓN, PRECIO de la tabla PRODUCTOS y un campo nuevo que nombramos con el texto “DESCUENTO_7”.
   -- Debe mostrar el resultado de aplicar sobre el campo PRECIO un descuento de un 7 %. El formato del nuevo campo para debe aparecer con 2 lugares decimales.
 
+--  round( PRECIO*0.05,2) AS DESCUENTO,
+    
+    select NOMBREARTÍCULO,SECCIÓN,  round(PRECIO,2) as PRECIO_PRODUCTO, round(PRECIO * 0.07 ,2)  as  DESCUENTO , round((PRECIO) - (PRECIO * 0.07) ,2) as PRECIO_CON_DESCUENTO_7 from  productos;
+    
+    
+    
+												    -- Ejerccio 2 --  
+                                                                                                            
+   -- Realizar una consulta visualizando los campos FECHA, SECCIÓN, NOMBREARTÍCULO y PRECIO de la tabla PRODUCTOS y un campo nuevo que nombramos con el texto “DTO2 €_EN_CERÁMICA”.
+   -- Debe mostrar el resultado de aplicar sobre el campo PRECIO la resta de 2 € sólo a los artículos de la sección CERÁMICA. El formato del nuevo campo debe aparecer con 2 lugares decimales.
+   -- Ordenar el resultado de la consulta por el campo FECHA descendente.                                                     
 
+
+   -- 1 --
+   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos ;   
+   
+
+   -- 2 ordenado por SECCIÓN =  'CERÁMICA'  --
+   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'CERÁMICA' ;  
+   
+   -- 3 ordenado por SECCIÓN =  'CERÁMICA'   --
+   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'CERÁMICA' order by  FECHA desc  ;  
+   
+   
+-- 4 ordenado por SECCIÓN =  'JUGUETERÍA' --
+ select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'JUGUETERÍA' order by  FECHA desc  ;  
+      
     
     
-    
-    
-    
-    
-    
-    
-    
+                                                                          -- Ejerccio 3 --  
+                                                                          
+                                                                          
+                                                                          
+
+-- Realizar una consulta visualizando los campos NOMBRE ARTÍCULO, SECCIÓN, PRECIO de la tabla PRODUCTOS y un campo nuevo que nombramos con el texto “PRECIO_AUMENTADO_EN_2”.
+
+-- ebe mostrar el PRECIO con un incremento de un 2% del PRECIO. Sólo debemos tener en cuenta los registros de la sección FERRETERÍA. El nuevo campo debe aparecer en Euros
+
+-- y con 2 lugares decimales
+
+
+     
     
     
     
