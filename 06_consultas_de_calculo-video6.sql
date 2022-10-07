@@ -133,12 +133,11 @@
 
 -- Realizar una consulta visualizando los campos NOMBRE ARTÍCULO, SECCIÓN, PRECIO de la tabla PRODUCTOS y un campo nuevo que nombramos con el texto “PRECIO_AUMENTADO_EN_2”.
 
--- ebe mostrar el PRECIO con un incremento de un 2% del PRECIO. Sólo debemos tener en cuenta los registros de la sección FERRETERÍA. El nuevo campo debe aparecer en Euros
+-- debe mostrar el PRECIO con un incremento de un 2% del PRECIO. Sólo debemos tener en cuenta los registros de la sección FERRETERÍA. El nuevo campo debe aparecer en Euros
 
 -- y con 2 lugares decimales
 
-
-     
+     select NOMBREARTÍCULO,SECCIÓN,round(PRECIO,2)as PRECIO, round(PRECIO *0.02,2) as INCREMENTO_2_SOBRE_PRECIO, round(PRECIO+(PRECIO *0.02) ,2) as PRECIO_MAS_INCREMENTO  from productos  where SECCIÓN='FERRETERÍA' order by PRECIO desc;
     
     
     

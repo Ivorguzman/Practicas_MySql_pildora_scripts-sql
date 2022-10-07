@@ -197,15 +197,18 @@ select SECCIÓN, avg(PRECIO) as MEDIA_POR_SECCION from productos  group by SECCI
                           
     
     
+    
+    
+                                          -- Ejerccio 5 --
 
+-- 5. Realizar Una consulta que muestre cuantos artículos hay de la sección “Deportes”. 
 
+ -- CAMPO DE AGRUPACION = SECCIÓN
+ -- CAMPO DEL CALCULO = NOMBREARTÍCULO
+ 
+                                 -- COUNT() cuenta los registros de un campo --
 
-
-  
-
-
-
-
+select count(NOMBREARTÍCULO) as CANTIDAD_ARICULOS_DE_DEPORTE from productos where SECCIÓN='DEPORTES'  ;
 
 
 
