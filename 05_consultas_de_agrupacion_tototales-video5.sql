@@ -15,8 +15,8 @@
 
 
 -- metodo para realizar las consultas de agrupacion
-
-	-- se nececitan dos campos : 
+ 
+-- se nececitan dos campos : 
 		-- CAMPO DE AGRUPACION
         -- CAMPO DEL CALCULO
 
@@ -26,7 +26,7 @@
  
  
 -- recuperando los registros por el campo de agrupacion (SECCÓN), y por el campo de lculo (PRECIO) . Y agrupados por  (SECCIÓN). ==> group by SECCIÓN
-select SECCIÓN, PRECIO from productos group by SECCIÓN ;
+SELECT  SECCIÓN, PRECIO FROM  productos  GROUP BY SECCIÓN;
 
 
 -- *********************************************************************************************************************************
@@ -37,14 +37,14 @@ select SECCIÓN, PRECIO from productos group by SECCIÓN ;
 	-- CAMPO DEL CALCULO = PRECIO
 
 -- aplicando la funcion de agregado SQL sum()  al campo de calculo (PRECIO) ==> sum(PRECIO)
-select SECCIÓN, sum(PRECIO) from productos group by SECCIÓN ;
+SELECT SECCIÓN, SUM(PRECIO) FROM productos GROUP BY SECCIÓN ;
 
 
 -- los  alias permiten  cambiar el nombre a un campo a nivel de consulta si afectar la estructura de la tabla
 
 -- alias (as) ==> *** sum(PRECIO) as TOTAL_SECCIÓN *** RENOMBRA EL CAMPO SOLO A NIVEL DE CONSULTA.
-select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN  order by TOTAL_SECCIÓN;
-select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN  order by TOTAL_SECCIÓN desc;
+SELECT SECCIÓN, SUM(PRECIO) AS TOTAL_SECCIÓN FROM productos GROUP BY SECCIÓN  ORDER BY TOTAL_SECCIÓN;
+SELECT SECCIÓN, SUM(PRECIO) AS TOTAL_SECCIÓN FROM productos GROUP BY SECCIÓN  ORDER BY TOTAL_SECCIÓN DESC;
 
 
 
@@ -57,17 +57,17 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 	-- CAMPO DEL CALCULO = PRECIO
     
     -- agrupado  por secciones(SECCIÓN)
-    select SECCIÓN, avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN;
+    SELECT SECCIÓN, AVG(PRECIO) AS PRECIO_PROMEDIO FROM productos GROUP BY SECCIÓN;
     
     --  agrupado  por secciones(SECCIÓN) y ordenado por precio ==> (PRECIO_PROMEDIO)  en forma decendente
-    select SECCIÓN, avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN order by PRECIO_PROMEDIO desc;
+    SELECT SECCIÓN, AVG(PRECIO) AS PRECIO_PROMEDIO FROM productos GROUP BY SECCIÓN ORDER BY PRECIO_PROMEDIO DESC;
          
     -- En las consultas de  agrupacion para establecer criterios,  se utiliza la clausula HAVING  en vez de la clausula WHERE
     -- como decalracion formal Se utiliza el operador logico or en vez del operador logico and  aunque paresca contra intuitivo.
-    select SECCIÓN, avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN  having  SECCIÓN='CONFECCIÓN' or SECCIÓN='FERRETERIA';
+    SELECT SECCIÓN, AVG(PRECIO) AS PRECIO_PROMEDIO FROM productos GROUP BY SECCIÓN  HAVING  SECCIÓN='CONFECCIÓN' OR SECCIÓN='FERRETERIA';
     
     -- Ordenandolo por articulos  en forma acendente
-    select SECCIÓN , avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN having SECCIÓN='CONFECCIÓN' or SECCIÓN='FERRETERIA' order by  PRECIO_PROMEDIO;
+    SELECT SECCIÓN , AVG(PRECIO) AS PRECIO_PROMEDIO FROM productos GROUP BY SECCIÓN HAVING SECCIÓN='CONFECCIÓN' OR SECCIÓN='FERRETERIA' ORDER BY  PRECIO_PROMEDIO;
 
   
 -- *********************************************************************************************************************************
@@ -81,27 +81,27 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
     -- consulta que muestra cuantos cliente se tiene por póblacion.
     
     -- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE
-    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION from clientes  group by POBLACIÓN ;
+    SELECT POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION FROM clientes  GROUP BY POBLACIÓN ;
      
 	-- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE en forma decendente
-	select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION from clientes  group by POBLACIÓN order by CLIENTES_POBLACION desc;
+	SELECT POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION FROM clientes  GROUP BY POBLACIÓN ORDER BY CLIENTES_POBLACION DESC;
     
 	-- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE, mostrando CÓDIGOCLIENTE por POBLACIÓN y ordenados por clientes en forma decendente
-    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION, RESPONSABLE from clientes  group by POBLACIÓN order by CLIENTES_POBLACION  desc;
+    SELECT POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION, RESPONSABLE FROM clientes  GROUP BY POBLACIÓN ORDER BY CLIENTES_POBLACION  DESC;
     
     
     -- Consulta agrupada por POBLACIÓN  contada por CÓDIGOCLIENTE, mostrando CÓDIGOCLIENTE por POBLACIÓN y ordenados por clientes en forma decendente solo muetra el mayor gracias a la clausula  LIMIT 1 en conbinacion con DESC
-    select POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION, RESPONSABLE from clientes  group by POBLACIÓN order by CLIENTES_POBLACION  DESC LIMIT 1;
+    SELECT POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION, RESPONSABLE FROM clientes  GROUP BY POBLACIÓN ORDER BY CLIENTES_POBLACION  DESC LIMIT 1;
     
     
 	 -- Consulta agrupada por POBLACIÓN contada por CÓDIGOCLIENTE y agrupada por POBLACIÓN en forma decendentey ordenados por clientes en forma decendente donde RESPONSABLE > 10
-     select  POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE from clientes  group by POBLACIÓN having CLIENTES_POBLACION >= 10  or CLIENTES_POBLACION >= 5;
+     SELECT  POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE FROM clientes  GROUP BY POBLACIÓN HAVING CLIENTES_POBLACION >= 10  OR CLIENTES_POBLACION >= 5;
      
      -- Consulta agrupada por POBLACIÓN contada por CÓDIGOCLIENTE y agrupada por POBLACIÓN en forma decendentey ordenados por clientes en forma decendente donde RESPONSABLE  esten entre 2 y 4
-	  select  POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE from clientes  group by POBLACIÓN having CLIENTES_POBLACION between 2 and 4 ;
+	  SELECT  POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE FROM clientes  GROUP BY POBLACIÓN HAVING CLIENTES_POBLACION BETWEEN 2 AND 4 ;
       
       -- Consulta agrupada por POBLACIÓN contada por CÓDIGOCLIENTE y agrupada por POBLACIÓN en forma decendentey ordenados por clientes en forma decendente donde RESPONSABLE  esten entre 2 y 4
-	  select  POBLACIÓN, count(CÓDIGOCLIENTE) as CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE from clientes  group by POBLACIÓN having CLIENTES_POBLACION >= 1 and  CLIENTES_POBLACION <= 3;
+	  SELECT  POBLACIÓN, COUNT(CÓDIGOCLIENTE) AS CLIENTES_POBLACION , RESPONSABLE , CÓDIGOCLIENTE FROM clientes  GROUP BY POBLACIÓN HAVING CLIENTES_POBLACION >= 1 AND  CLIENTES_POBLACION <= 3;
 
 
 -- *********************************************************************************************************************************
@@ -113,15 +113,15 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 	-- CAMPO DE AGRUPACION = SECCIÓN
 	-- CAMPO DEL CALCULO = PRECIO
     
-    select SECCIÓN, max(PRECIO) as PRECIO_ARTICULO_MAS_CARO, NOMBREARTÍCULO,CÓDIGOARTÍCULO from productos group by SECCIÓN;
+    SELECT SECCIÓN, MAX(PRECIO) AS PRECIO_ARTICULO_MAS_CARO, 'NOMBREARTÍCULO,CÓDIGOARTÍCULO' FROM productos GROUP BY SECCIÓN;
     
    
-    select SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, max(PRECIO) as PRECIO_ARTICULO_MAS_CARO from productos where SECCIÓN='CONFECCIÓN'; -- ojo
+    SELECT SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, MAX(PRECIO) AS 'PRECIO_ARTICULO_MAS_CARO' FROM productos WHERE SECCIÓN='CONFECCIÓN'; -- ojo
     
-	select SECCIÓN, max(PRECIO) as PRECIO_ARTICULO_MAS_CARO,NOMBREARTÍCULO,CÓDIGOARTÍCULO from productos where SECCIÓN='CONFECCIÓN' group by SECCIÓN; -- ojo
+	SELECT SECCIÓN, MAX(PRECIO) AS PRECIO_ARTICULO_MAS_CARO,NOMBREARTÍCULO,CÓDIGOARTÍCULO FROM productos WHERE SECCIÓN='CONFECCIÓN' GROUP BY SECCIÓN; -- ojo
     
     
-    select SECCIÓN, PRECIO as PRECIO_ARTICULO_MAS_CARO, NOMBREARTÍCULO, CÓDIGOARTÍCULO from productos where SECCIÓN='CONFECCIÓN';
+    SELECT SECCIÓN, PRECIO AS PRECIO_ARTICULO_MAS_CARO, NOMBREARTÍCULO, CÓDIGOARTÍCULO FROM productos WHERE SECCIÓN='CONFECCIÓN';
     
     
 -- *********************************************************************************************************************************
@@ -133,9 +133,9 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 	-- CAMPO DE AGRUPACION = SECCIÓN
 	-- CAMPO DEL CALCULO = PRECIO
     
-    select SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, min(PRECIO) as PRECIO_ARTICULO_MAS_VARATO from productos;
+    SELECT SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, MIN(PRECIO) AS 'PRECIO_ARTICULO_MAS_VARATO' FROM productos;
     
-    select SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, min(PRECIO) as PRECIO_ARTICULO_MAS_VARATO from productos group by SECCIÓN;
+    SELECT SECCIÓN, CÓDIGOARTÍCULO, NOMBREARTÍCULO, MIN(PRECIO) AS 'PRECIO_ARTICULO_MAS_VARATO' FROM productos GROUP BY SECCIÓN;
     
     
     
@@ -156,7 +156,7 @@ select SECCIÓN, sum(PRECIO) as TOTAL_SECCIÓN from productos group by SECCIÓN 
 -- con el nombre de “Residencia”. Los registros aparecerán ordenados
 -- descendentemente por el campo “Población”.
 
-select DIRECCIÓN,TELÉFONO,POBLACIÓN as Residencia  from clientes order by  Residencia desc;
+SELECT DIRECCIÓN,TELÉFONO,POBLACIÓN AS Residencia  FROM clientes ORDER BY  Residencia DESC;
 
 
 
@@ -164,7 +164,7 @@ select DIRECCIÓN,TELÉFONO,POBLACIÓN as Residencia  from clientes order by  Re
                                
 -- Realizar una consulta que muestre que poblaciones hay en la tabla “Clientes”.
 
-select POBLACIÓN from clientes;
+SELECT POBLACIÓN FROM clientes;
 
 
 
@@ -177,7 +177,7 @@ select POBLACIÓN from clientes;
 	-- CAMPO DE AGRUPACION = seccion
 	-- CAMPO DEL CALCULO = precio
     
-    select SECCIÓN, sum(PRECIO) as SUMA_POR_SECCION from productos  group by SECCIÓN;
+    SELECT SECCIÓN, SUM(PRECIO) AS 'SUMA_POR_SECCION' FROM productos  GROUP BY SECCIÓN;
     
     
     
@@ -190,14 +190,10 @@ select POBLACIÓN from clientes;
 -- CAMPO DE AGRUPACION =  SECCION
 -- CAMPO DEL CALCULO = PRECIO
 
-select SECCIÓN, avg(PRECIO) as PRECIO_PROMEDIO from productos group by SECCIÓN ;
+SELECT SECCIÓN, AVG(PRECIO) AS PRECIO_PROMEDIO FROM productos GROUP BY SECCIÓN ; 
 
-select SECCIÓN, avg(PRECIO) as MEDIA_POR_SECCION from productos  group by SECCIÓN having SECCIÓN='CERÁMICA' or SECCIÓN='CONFECCIÓN' or SECCIÓN='OFICINA'  or SECCIÓN='DEPORTES'  or SECCIÓN='FERRETERÍA'  or SECCIÓN='OFICINA';
+SELECT SECCIÓN, AVG(PRECIO) AS MEDIA_POR_SECCION FROM productos  GROUP BY SECCIÓN HAVING SECCIÓN='CERÁMICA' OR SECCIÓN='CONFECCIÓN' OR SECCIÓN='OFICINA'  OR SECCIÓN='DEPORTES'  OR SECCIÓN='FERRETERÍA'  OR SECCIÓN='OFICINA';
 
-                          
-    
-    
-    
     
                                           -- Ejerccio 5 --
 
@@ -208,7 +204,7 @@ select SECCIÓN, avg(PRECIO) as MEDIA_POR_SECCION from productos  group by SECCI
  
                                  -- COUNT() cuenta los registros de un campo --
 
-select count(NOMBREARTÍCULO) as CANTIDAD_ARICULOS_DE_DEPORTE from productos where SECCIÓN='DEPORTES'  ;
+SELECT COUNT(NOMBREARTÍCULO) AS CANTIDAD_ARICULOS_DE_DEPORTE FROM productos WHERE SECCIÓN='DEPORTES'  ;
 
 
 

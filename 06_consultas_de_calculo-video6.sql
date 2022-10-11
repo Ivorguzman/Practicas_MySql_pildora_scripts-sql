@@ -23,28 +23,28 @@
     
                                               --  ---- Funcion Round() ==> Permite redondear resultados .----
                                                           
-    select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA from productos;
+    SELECT NOMBREARTÍCULO, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA FROM productos;
     
     --  Crear consulta que refleje un descuento de 5% en cada articulo
-    select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_CON_DESCUENTO from productos;
+    SELECT NOMBREARTÍCULO, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_CON_DESCUENTO FROM productos;
       
 	--  Crear consulta que refleje un descuento de 5% en cada articulo ordenado por seccion
-    select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_CON_DESCUENTO   from productos order by  SECCIÓN;
+    SELECT NOMBREARTÍCULO, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_CON_DESCUENTO   FROM productos ORDER BY  SECCIÓN;
     
 	--  Crear consulta que refleje un descuento de 5% en cada articulo agrupado por precio mostrando el mas caro
-    select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_CON_DESCUENTO   from productos group by  PRECIO desc LIMIT 1;
+    SELECT NOMBREARTÍCULO, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_CON_DESCUENTO   FROM productos GROUP BY  PRECIO DESC LIMIT 1;
    
 	--  Crear consulta que refleje un descuento de 5% en cada articulo agrupado por precio mostrando los ariculos que este entre 100 y 400 del mayor al menor
-    select NOMBREARTÍCULO, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_CON_DESCUENTO   from productos group by  PRECIO desc  having  PRECIO between 100 and 400  ;
+    SELECT NOMBREARTÍCULO, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_CON_DESCUENTO   FROM productos GROUP BY  PRECIO DESC  HAVING  PRECIO BETWEEN 100 AND 400  ;
     
     --  Crear consulta que refleje un descuento de 5% en cada articulo de la seccion deporte
-    select NOMBREARTÍCULO,FECHA, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_CON_DESCUENTO   from  productos    where SECCIÓN='DEPORTES'  ;
+    SELECT NOMBREARTÍCULO,FECHA, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_CON_DESCUENTO   FROM  productos    WHERE SECCIÓN='DEPORTES'  ;
      
 	--  Crear consulta que refleje un descuento de 5% en cada articulo ordenado por precio mostrando los ariculos que este entre 100 y 400 del mayor al menor de la seccon deportes
-    select NOMBREARTÍCULO,FECHA, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_MENOS_DESCUENTO    from  productos   where SECCIÓN='DEPORTES' having  PRECIO  between 100 and 400  order by PRECIO desc  ;
+    SELECT NOMBREARTÍCULO,FECHA, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_MENOS_DESCUENTO    FROM  productos   WHERE SECCIÓN='DEPORTES' HAVING  PRECIO  BETWEEN 100 AND 400  ORDER BY PRECIO DESC  ;
      
     --  Crear consulta que refleje un descuento de 5% en cada articulo ordenado por precio mostrando el ariculos mas caro que este entre 100 y 400  seccon deportes
-    select NOMBREARTÍCULO,FECHA, SECCIÓN,round(PRECIO,2) as PRECIO, round(PRECIO *.21,2) as IVA ,Round(PRECIO + (PRECIO * 0.21),2) as PRECIO_IVA , round( PRECIO*0.05,2) AS DESCUENTO,  round(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) as PRECIO_MENOS_DESCUENTO    from  productos   where SECCIÓN='DEPORTES' having  PRECIO  between 100 and 400  order by PRECIO desc LIMIT 1;
+    SELECT NOMBREARTÍCULO,FECHA, SECCIÓN,ROUND(PRECIO,2) AS PRECIO, ROUND(PRECIO *.21,2) AS IVA ,ROUND(PRECIO + (PRECIO * 0.21),2) AS PRECIO_IVA , ROUND( PRECIO*0.05,2) AS DESCUENTO,  ROUND(PRECIO +  (PRECIO * 0.21) - (PRECIO*0.05),2) AS PRECIO_MENOS_DESCUENTO    FROM  productos   WHERE SECCIÓN='DEPORTES' HAVING  PRECIO  BETWEEN 100 AND 400  ORDER BY PRECIO DESC LIMIT 1;
    
    
      
@@ -54,14 +54,14 @@
 										--  -**** Funcion Now() ==> Devuelve el dia y Hora Actual actual en el momento de  hacer la consulta.****
 																			
        
-       select NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA from productos;
+       SELECT NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA FROM productos;
        
        
-       select NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA from productos where SECCIÓN='DEPORTES';
+       SELECT NOMBREARTÍCULO,SECCIÓN,PRECIO,FECHA FROM productos WHERE SECCIÓN='DEPORTES';
        
        
        -- Utilizando funcion  Now() en la consulta
-       select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY from productos where SECCIÓN='DEPORTES';
+       SELECT NOMBREARTÍCULO,SECCIÓN,PRECIO, NOW() AS FECHA_DE_HOY FROM productos WHERE SECCIÓN='DEPORTES';
        
        
        
@@ -70,7 +70,7 @@
                       -- ****** datediff(  ,   ) ==> Devuelve el no de dias entre dos fechas en una consulta ******
       
       -- Nota: No se puede trabajar con los alias
-      select NOMBREARTÍCULO,SECCIÓN,PRECIO, Now() as FECHA_DE_HOY, datediff(now() , FECHA)  as DIFERENCIA from productos where SECCIÓN='DEPORTES';
+      SELECT NOMBREARTÍCULO,SECCIÓN,PRECIO, NOW() AS 'FECHA_DE_HOY', DATEDIFF(NOW() , FECHA)  AS DIFERENCIA FROM productos WHERE SECCIÓN='DEPORTES';
       
       
       
@@ -78,7 +78,7 @@
                    
               --  -**** Date_format( %D-%M-%Y) ==> Permite formatear las fechas   .****
               
-	  select NOMBREARTÍCULO,SECCIÓN,PRECIO, Date_format(now(),'%M-%Y') as FECHA_DE_HOY, Date_format(datediff(now() , FECHA ),'%D-%M-%Y' ) as DIFERENCIA from productos where SECCIÓN='DEPORTES';
+	  SELECT NOMBREARTÍCULO,SECCIÓN,PRECIO, DATE_FORMAT(NOW(),'%M-%Y') AS 'FECHA_DE_HOY', DATE_FORMAT(DATEDIFF(NOW() , FECHA ),'%D-%M-%Y' ) AS DIFERENCIA FROM productos WHERE SECCIÓN='DEPORTES';
        
 	
      
@@ -99,7 +99,7 @@
 
 --  round( PRECIO*0.05,2) AS DESCUENTO,
     
-    select NOMBREARTÍCULO,SECCIÓN,  round(PRECIO,2) as PRECIO_PRODUCTO, round(PRECIO * 0.07 ,2)  as  DESCUENTO , round((PRECIO) - (PRECIO * 0.07) ,2) as PRECIO_CON_DESCUENTO_7 from  productos;
+    SELECT NOMBREARTÍCULO,SECCIÓN,  ROUND(PRECIO,2) AS 'PRECIO_PRODUCTO', ROUND(PRECIO * 0.07 ,2)  AS  DESCUENTO , ROUND((PRECIO) - (PRECIO * 0.07) ,2) AS 'PRECIO_CON_DESCUENTO_7' FROM  productos;
     
     
     
@@ -111,18 +111,18 @@
 
 
    -- 1 --
-   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos ;   
+   SELECT FECHA, SECCIÓN, NOMBREARTÍCULO,ROUND(PRECIO,2) AS PRECIO, ROUND(2,2) AS  DTO_2€_EN_CERÁMICA, ROUND(PRECIO-2,2) AS 'PRECIO_CON_DESCUENTO' FROM productos ;   
    
 
    -- 2 ordenado por SECCIÓN =  'CERÁMICA'  --
-   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'CERÁMICA' ;  
+   SELECT FECHA, SECCIÓN, NOMBREARTÍCULO,ROUND(PRECIO,2) AS PRECIO, ROUND(2,2) AS  DTO_2€_EN_CERÁMICA, ROUND(PRECIO-2,2) AS 'PRECIO_CON_DESCUENTO' FROM productos WHERE SECCIÓN =  'CERÁMICA' ;  
    
    -- 3 ordenado por SECCIÓN =  'CERÁMICA'   --
-   select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'CERÁMICA' order by  FECHA desc  ;  
+   SELECT FECHA, SECCIÓN, NOMBREARTÍCULO,ROUND(PRECIO,2) AS PRECIO, ROUND(2,2) AS  DTO_2€_EN_CERÁMICA, ROUND(PRECIO-2,2) AS 'PRECIO_CON_DESCUENTO' FROM productos WHERE SECCIÓN =  'CERÁMICA' ORDER BY  FECHA DESC  ;  
    
    
 -- 4 ordenado por SECCIÓN =  'JUGUETERÍA' --
- select FECHA, SECCIÓN, NOMBREARTÍCULO,round(PRECIO,2) AS PRECIO, round(2,2) as  DTO_2€_EN_CERÁMICA, round(PRECIO-2,2) as PRECIO_CON_DESCUENTO from productos where SECCIÓN =  'JUGUETERÍA' order by  FECHA desc  ;  
+ SELECT FECHA, SECCIÓN, NOMBREARTÍCULO,ROUND(PRECIO,2) AS PRECIO, ROUND(2,2) AS  DTO_2€_EN_CERÁMICA, ROUND(PRECIO-2,2) AS 'PRECIO_CON_DESCUENTO' FROM productos WHERE SECCIÓN =  'JUGUETERÍA' ORDER BY  FECHA DESC  ;  
       
     
     
@@ -137,7 +137,7 @@
 
 -- y con 2 lugares decimales
 
-     select NOMBREARTÍCULO,SECCIÓN,round(PRECIO,2)as PRECIO, round(PRECIO *0.02,2) as INCREMENTO_2_SOBRE_PRECIO, round(PRECIO+(PRECIO *0.02) ,2) as PRECIO_MAS_INCREMENTO  from productos  where SECCIÓN='FERRETERÍA' order by PRECIO desc;
+     SELECT NOMBREARTÍCULO,SECCIÓN,ROUND(PRECIO,2)AS PRECIO, ROUND(PRECIO *0.02,2) AS INCREMENTO_2_SOBRE_PRECIO, ROUND(PRECIO+(PRECIO *0.02) ,2) AS 'PRECIO_MAS_INCREMENTO'  FROM productos  WHERE SECCIÓN='FERRETERÍA' ORDER BY PRECIO DESC;
     
     
     
