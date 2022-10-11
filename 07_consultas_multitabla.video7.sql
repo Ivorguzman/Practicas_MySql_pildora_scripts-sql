@@ -3,9 +3,9 @@
 -- ********************  Consultaas Multitablas ó Consutas de union ****************************
 
 
--- De union externas
+-- De union EXTERNA
 
-	-- Unuion ==> Permite unir en una unica consulta varias tablas almacenada en la base de datos
+	-- Unuion ==> Permite unir VARIAS CUNSULTAS DE TABLASD DIFERENTES en una unica CONSULTA  y mostrarlo en una unica tabla
     -- Union all 
     
     
@@ -13,7 +13,7 @@
     -- Intersect ==> MySql no lo sopporta
     -- Minus     ==> MySql no lo sopporta
     
-    -- De union Internas
+    -- De union INTERNA
     
 		-- Inner Join
         -- Right join
@@ -33,9 +33,47 @@
 -- Requisitos para poder realizar uniones de tablas: 
 	--  Ambas tablas deben tener el mismo numero de campos
     --  Los campos debe ser compatibles Ejemplo : Campo Numerico y campo tipo monedad
-    --
-
-
-
-
+    --  El nombre de los campos que se le asigna a la tabla resultante en la consulta  son los de la primera cunsulta (La primera tabala  en la union de tablas)
+    
+    
+  -- Consulta  articulos que pertenescan a Deportes que esta en la base de datos productos   
+  SELECT  * FROM  productos WHERE SECCIÓN = 'deportes';
+  
+  -- consulta de articulo deporte de riesgo  de la seccion deportes de la tabla productosnuevos
+  SELECT * FROM productosnuevos WHERE SECCIÓN='deportes de riesgo';
+  
+  
+  -- Usando el Oprerador Union  consulta  articulos que pertenescan a Deportes que esta en la base de datos productos   y Deportes de riesgo que estan el abase de datos productosnuevos
+  SELECT * FROM productos WHERE SECCIÓN = 'deportes' UNION  SELECT  * FROM productosnuevos  WHERE SECCIÓN ='DEPORTES DE RIESGO';
+    
+    
+  -- hacer una cobnsulta que me relaciones articulos deportes y articulos deportes de riesgo  y los ordenes por PAÍSDEORIGEN
+  SELECT * FROM productos  WHERE SECCIÓN = 'deportes' UNION SELECT * FROM productosnuevos WHERE SECCIÓN = 'DEPORTES DE RIESGO'  ORDER BY PAÍSDEORIGEN ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
