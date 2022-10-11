@@ -21,6 +21,8 @@
         
         
         
+        
+        
                                                 -- ******** CONSULTAS DEUNION EXTERNA ***********
 
 
@@ -31,6 +33,7 @@
 -- Requisitos para poder realizar uniones de tablas: 
 	--  Ambas tablas deben tener el mismo numero de campos
     --  Los campos debe ser compatibles Ejemplo : Campo Numerico y campo tipo monedad
+    --
 
 
 
