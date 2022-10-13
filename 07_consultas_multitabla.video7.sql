@@ -39,8 +39,8 @@
   select * from productos; -- SELECIONANDO TODOS LOS CAMPOS 
   select * from productosnuevos; -- SELECIONANDO TODOS LOS CAMPOS 
   
-  select * from productos union select * from productosnuevos; -- UNIENDO LAS DOS CONULTAS
-  select * from productosnuevos   union   select * from productos; -- INVIRTIENDO  LA CONSUULTA UNIDA
+  select * from productos union select * from productosnuevos; -- UNIENDO LAS DOS CONULTAS EN UNA SOLA TABLA
+  select * from productosnuevos   union   select * from productos; -- INVIRTIENDO  LA CONSULTA UNIDA
     
     
     
