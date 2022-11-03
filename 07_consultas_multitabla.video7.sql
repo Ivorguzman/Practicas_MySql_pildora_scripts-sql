@@ -6,7 +6,7 @@
 -- De union EXTERNA
 
 	-- Unuion ==> Permite unir VARIAS CUNSULTAS DE TABLASD DIFERENTES en una unica CONSULTA  y mostrarlo en una unica tabla
-    -- Union all 
+    --  Union all 
     
     
     -- Execpt    ==> MySql no lo sopporta
@@ -29,7 +29,7 @@
 
 
 -- *****************************************   UNION ==>  Permite unir en una unica consulta varias tablas almacenada en la base de datos *****************************************
--- 
+
 -- Requisitos para poder realizar uniones de tablas: 
 -- Ambas tablas deben tener el mismo numero de campos
 --  Los campos debe ser compatibles Ejemplo : Campo Numerico y campo tipo monedad
@@ -85,7 +85,6 @@
   
              
 		 DESCRIBE  productosnuevos;
-
   
 
 
